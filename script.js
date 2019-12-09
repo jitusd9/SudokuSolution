@@ -33,7 +33,8 @@ CELLS.forEach(c => {
 		if (isValid(grid, i, j, Number(c.value))) {
 			grid[i][j] = Number(c.value);
 		} else {
-			clearGrid();
+			grid[i][j] = 0;
+			c.value = "";
 			alert("Invalid Entries");
 		}
 	};
