@@ -30,7 +30,12 @@ CELLS.forEach(c => {
 		i = Number(c.getAttribute("col"));
 		j = Number(c.getAttribute("row"));
 
-		grid[i][j] = Number(c.value);
+		if (isValid(grid, i, j, Number(c.value))) {
+			grid[i][j] = Number(c.value);
+		} else {
+			clearGrid();
+			alert("Invalid Entries");
+		}
 	};
 });
 
