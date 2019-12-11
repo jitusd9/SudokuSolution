@@ -70,10 +70,23 @@ function clearGrid() {
 	}
 }
 
+function checkEmpty(grid) {
+	for (let i = 0; i < 9; i++) {
+		for (let j = 0; j < 9; j++) {
+			if (grid[i][j] != 0) return true;
+		}
+	}
+	return false;
+}
+
 let solveBtn = document.querySelector("#solve");
 solveBtn.addEventListener("click", () => {
-	solveSudoku(grid);
-	printSudoku(grid);
+	if (checkEmpty(grid)) {
+		solveSudoku(grid);
+		printSudoku(grid);
+	} else {
+		alert("Please! fill some entries");
+	}
 });
 
 // console.log("Backtracks:", backtracks);
