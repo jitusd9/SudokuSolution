@@ -4,4 +4,4 @@ A sudoku solver application build on javascript, code might need refactoring as 
 
 ## Live DEMO
 
-Live DEMO is available in github pages, click here <https://jitusd9.github.io/SudokuSolution/>.
+Live DEMO is available in github pages, [click here](https://jitusd9.github.io/SudokuSolution/).

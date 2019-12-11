@@ -68,25 +68,36 @@ function clearGrid() {
 			grid[i][j] = 0;
 		}
 	}
+	backtracks = 0;
 }
 
 function checkEmpty(grid) {
+	let zeroCount = 0;
 	for (let i = 0; i < 9; i++) {
 		for (let j = 0; j < 9; j++) {
-			if (grid[i][j] != 0) return true;
+			if (grid[i][j] == 0) zeroCount++;
 		}
 	}
-	return false;
+	if (zeroCount === 81) {
+		return false;
+	} else if (zeroCount < 81) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 let solveBtn = document.querySelector("#solve");
 solveBtn.addEventListener("click", () => {
 	if (checkEmpty(grid)) {
-		solveSudoku(grid);
-		printSudoku(grid);
+		if (solveSudoku(grid)) {
+			printSudoku(grid);
+			console.log("Backtracks:", backtracks);
+		} else {
+			alert("Your entries are invalid");
+			clearGrid();
+		}
 	} else {
 		alert("Please! fill some entries");
 	}
 });
-
-// console.log("Backtracks:", backtracks);
