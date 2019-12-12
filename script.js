@@ -13,15 +13,15 @@ ROWS.forEach(ROW => {
 
 // make DOM function to select rows and coloumns and sub-gird highlighted on hover
 
-let CELLSd = document.querySelectorAll("td");
-CELLSd.forEach(e => {
-	e.addEventListener("mouseover", cell => {
-		CELLSd.forEach(e => {
-			e.style.background = "none";
-		});
-		e.style.background = "#f8f9bf";
-	});
-});
+// let CELLSd = document.querySelectorAll("td");
+// CELLSd.forEach(e => {
+// 	e.addEventListener("mouseover", cell => {
+// 		CELLSd.forEach(e => {
+// 			e.style.background = "none";
+// 		});
+// 		e.style.background = "#f8f9bf";
+// 	});
+// });
 
 // Take input for partially filled sudoku
 let CELLS = document.querySelectorAll("td input");
@@ -31,17 +31,23 @@ CELLS.forEach(c => {
 		j = Number(c.getAttribute("row"));
 
 		if (isValid(grid, i, j, Number(c.value))) {
+			// hightlight the user input cell td
+			let parentCell = c.parentElement;
+			parentCell.style.background = "#444";
+
 			grid[i][j] = Number(c.value);
 		} else {
 			grid[i][j] = 0;
 			c.value = "";
+
 			alert("Invalid Entries");
+			let clearParentTd = cell.parentElement;
+			clearParentTd.style.background = "#fff";
 		}
 	};
 });
 
 // print sudoku grid on console
-
 function printSudokuOnLog() {
 	numrow = 0;
 	grid.forEach(row => {
@@ -61,6 +67,8 @@ function clearGrid() {
 	let clearGridInput = document.querySelectorAll("td input");
 	clearGridInput.forEach(cell => {
 		cell.value = "";
+		let clearParentTd = cell.parentElement;
+		clearParentTd.style.background = "#fff";
 	});
 
 	for (let i = 0; i < 9; i++) {
